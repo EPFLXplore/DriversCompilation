@@ -27,17 +27,11 @@ gather_lib() {
 }
 
 gather_include() {
-    if [ "$1" == "xcontrol" ] || [ "$1" == "soem" ]
-    then
-        header_dir=(*)
-        cp -r ${header_dir[0]} $include_dir
-    else
-        header_superdir=(*)
-        cd "${header_superdir[0]}"
-        header_dir=(*)
-        cp -r ${header_dir[0]} $include_dir
-        cd ..
-    fi
+    header_superdir=(*)
+    cd "${header_superdir[0]}"
+    header_dir=(*)
+    cp -r ${header_dir[0]} $include_dir
+    cd ..
 }
 
 gather() {
