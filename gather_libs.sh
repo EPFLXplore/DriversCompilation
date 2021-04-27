@@ -27,11 +27,17 @@ gather_lib() {
 }
 
 gather_include() {
-    header_superdir=(*)
-    cd "${header_superdir[0]}"
-    header_dir=(*)
-    cp -r ${header_dir[0]} $include_dir
-    cd ..
+    if [ "$1" == "soem" ] 
+    then
+        header_dir=(*)
+        cp -r ${header_dir[0]} $include_dir
+    else
+        header_superdir=(*)
+        cd "${header_superdir[0]}"
+        header_dir=(*)
+        cp -r ${header_dir[0]} $include_dir
+        cd ..
+    fi
 }
 
 gather() {
